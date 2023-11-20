@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "build": "stencil build --docs",
+    "postbuild": "npm run scss-bundle",
+    "start": "stencil build --dev --watch --serve",
+    "scss-bundle": "scss-bundle -e ./src/components/_components-theming-mixins.scss -o dist/theming/theming-mixins.scss",
+    "scss-bundle.watch": "scss-bundle -w ./src/components -e ./src/components/_components-theming-mixins.scss -o dist/theming/theming-mixins.scss",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate",
+    "validate": "npm run test && npm run build && npm run scss-bundle",
+    "validate.ci": "npm run build -- --max-workers 1 --debug && npm run scss-bundle"
+  },
+  "dependencies": {
+    "@stencil/core": "^4.7.1",
+    "jquery": "^3.7.1",
+    "jspivottable": "^1.1.5"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.25"
+  }
+}
